@@ -136,56 +136,51 @@ var dump = $.getJSON( "/bubble.json", function() {
 
 function go(){
   var v1 = document.getElementById("select-native-1");
-  charty(v1.value,v2.value);
+  charty(v1.value);
 }
 
 
 function charty(index1) {
-	cd1 = lol[index1].clockdiff;
-	dc1 = lol[index1].dribblecount;
-	dd1 = lol[index1].defdistance;
-	tt1 = lol[index1].touchtime;
-	t1 = lol[index1].score;
-	name1 = lol[index1].name;
+	a2 = lol[index1].attempts2;
+	a3 = lol[index1].attempts3;
+	p2 = lol[index1].percentage2;
+	p3 = lol[index1].percentage3;
+  name = lol[index].name
 
-  cd2 = lol[index2].clockdiff;
-  dc2 = lol[index2].dribblecount;
-  dd2 = lol[index2].defdistance;
-  tt2 = lol[index2].touchtime;
-  t2 = lol[index2].score;
-  name2 = lol[index2].name;
 
 
 
 var ctx = document.getElementById('myChart').getContext("2d");
-var myChart = new Chart(ctx, {
-  type: 'radar',
-  data: {
-    labels: ["ClockDiff", "DribbleCount", "DefDistance", "TouchTime"],
-    datasets: [{
-      label: name1,
-      backgroundColor: "rgba(255,215,0,0.4)",
-      borderColor: "rgba(255,215,0,1)",
-      data: [cd1, dc1, dd1, tt1]
-    }, {
-      label: name2,
-      backgroundColor: "rgba(255,0,0,0.4)",
-      borderColor: "rgba(255,0,0,1)",
-      data: [cd2, dc2, dd2, tt2]
-    }]
-  }
+
+
+var myBubbleChart = new Chart(ctx,{
+    type: 'bubble',
+    data: data,
+    options: options
 });
 
+var data = {
+    datasets: [
+        {
+            label: name,
+            data: [
+                {
+                    x: 2,
+                    y: p2,
+                    r: a2
+                },
+                {
+                    x: 3,
+                    y: p3,
+                    r: a3
+                }
+            ],
+            backgroundColor:"#FF6384",
+            hoverBackgroundColor: "#FF6384",
+        }]
+};
 //document.getElementById(index).innerHTML += '<br>Some new content!';
 
 }
-
-function total(index){
-  tag = 't' + index;
-  t = lol[index].score;
-  console.log(tag);
-  document.getElementById(tag).innerHTML += ('Totat:' + t);
-}
-
 
 </script>
