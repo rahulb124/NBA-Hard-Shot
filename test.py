@@ -48,11 +48,11 @@ def find_stats(name,player_id):
     #NBA Stats API using selected player ID
 
     score = 0
-    headers = {'User-agent': 'Mozilla/5.0', 'referer': 'http://stats.nba.com/scores/'}
     shots_url = 'http://stats.nba.com/stats/playerdashptshots?DateFrom=&DateTo=&GameSegment=&LastNGames=0&LeagueID=00&Location=&Month=0&OpponentTeamID=0&Outcome=&PerMode=Totals&Period=0&PlayerID='+player_id+'&Season=2016-17&SeasonSegment=&SeasonType=Regular+Season&TeamID=0&VsConference=&VsDivision='
-    webbrowser.open('http://stats.nba.com/stats/playerdashptshots?DateFrom=&DateTo=&GameSegment=&LastNGames=0&LeagueID=00&Location=&Month=0&OpponentTeamID=0&Outcome=&PerMode=Totals&Period=0&PlayerID='+player_id+'&Season=2016-17&SeasonSegment=&SeasonType=Regular+Season&TeamID=0&VsConference=&VsDivision=')
+    #webbrowser.open('http://stats.nba.com/stats/playerdashptshots?DateFrom=&DateTo=&GameSegment=&LastNGames=0&LeagueID=00&Location=&Month=0&OpponentTeamID=0&Outcome=&PerMode=Totals&Period=0&PlayerID='+player_id+'&Season=2016-17&SeasonSegment=&SeasonType=Regular+Season&TeamID=0&VsConference=&VsDivision=')
     # request the URL and parse the JSON
-    response = requests.get(shots_url)
+    u_a = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.82 Safari/537.36"
+    response = requests.get(shots_url, headers={"USER-AGENT":u_a})
     response.raise_for_status() # raise exception if invalid response
     shots = response.json()['resultSets'][2]['rowSet']
     data = json.loads(response.text)
