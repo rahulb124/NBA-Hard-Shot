@@ -147,18 +147,6 @@ function charty(index1) {
 	p3 = lol[index1].percentage3;
   name = lol[index1].name
 
-
-
-
-var ctx = document.getElementById('myChart').getContext("2d");
-
-
-var myBubbleChart = new Chart(ctx,{
-    type: 'bubble',
-    data: data
-});
-
-
 var data = {
     datasets: [{
       label: name,
@@ -176,6 +164,17 @@ var data = {
       hoverBackgroundColor: "#FF6384",
         }]
 };
+
+
+
+
+var ctx = document.getElementById('myChart').getContext("2d");
+
+
+var myBubbleChart = new Chart(ctx,{
+    type: 'bubble',
+    data: data
+});
 
 //document.getElementById(index).innerHTML += '<br>Some new content!';
 
