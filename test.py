@@ -39,7 +39,10 @@ teams ={'east':{
                    }
                   }
 players = []
+lost = []
+
 player_stats = {'name':None,'dribblecount':None,'touchtime':None,'defdistance':None,'clockdiff':None,'score':None}
+player_sucks = {'name':None,'percentage2':None,'attempts2':None,'percentage3':None,'attempts3':None}
 
 def find_stats(name,player_id):  
     #NBA Stats API using selected player ID
@@ -84,6 +87,10 @@ def find_stats(name,player_id):
     dribblecount = (dribble_data[14]* dribble_data[12] * 1) + (dribble_data[18] * dribble_data[16]* 3)
     touchtime = (touch_data[14]* touch_data[12] * 2) + (touch_data[18]* touch_data[16] * 3)
     score = clockdiff + defdistance + dribblecount + touchtime
+    a2 = clockshot_data[13]
+    a3 = clockshot_data[17]
+    p2 = clockshot_data[14] * 100
+    p3 = clockshot_data[18] * 100
 
     #add Averages to dictionary then to list
     player_stats['name'] = name
@@ -92,10 +99,15 @@ def find_stats(name,player_id):
     player_stats['touchtime'] = touchtime
     player_stats['dribblecount'] = dribblecount
     player_stats['score']= score
+    player_sucks['percentage2'] = p2
+    player_sucks['percentage3'] = p3
+    player_sucks['attempts2'] = a2
+    player_sucks['attempts3'] = a3
+    lost.append(player_sucks.copy())
     players.append(player_stats.copy())
 
 
-x = 0
+x = 1
 if (x == 1):    
   for x in teams:  
     for y in teams[x]:
@@ -112,7 +124,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def dump():
-  return json.dumps(players)
+  return json.dumps(lost)
 
 @app.route('/p')
 def player():

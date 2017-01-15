@@ -1,0 +1,191 @@
+<!doctype html>
+<head>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script>
+window.onload = function() {
+    if(!window.location.hash) {
+        window.location = window.location + '#loaded';
+        window.location.reload();
+    }
+}
+</script>
+
+<style>
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.h2 {
+	position:center;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+#myInput {
+    border-box: box-sizing;
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 230px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #ddd}
+
+.show {display:block;}
+
+.container {
+  width: 80%;
+  margin: 15px auto;
+}
+
+.hide {
+  display: none;
+}
+
+</style>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+//failed syc on github
+var dump = $.getJSON( "/bubble.json", function() {
+  console.log( "success" );
+  window.lol = JSON.parse(dump.responseText);
+})
+</script>
+<title>NBA Hard Shot Analysis</title>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a data-ajax="false" href="/about.html">About</a></li>
+      <li><a data-ajax="false" href="/players.html">Players</a></li>
+      <li class="active"><a data-ajax="false" href="/compare.html">Compare</a></li>
+      <li><a data-ajax="false" href="/sort.html">Sort</a></li>
+    </ul>
+  </div>
+</nav>
+<h1>Players: NBA Hard Shot</h1>
+<form>
+<div class="ui-field-contain">
+    <label for="select-native-1">Player 1:</label>
+    <select name="select-native-1" id="select-native-1">
+        <option value="0">Damian Lillard</option>
+        <option value="1">Stephen Curry</option>
+        <option value="2">Demarcus Cousins</option>
+        <option value="3">Klay Thompson</option>
+        <option value="4">Draymond Green</option>
+        <option value="5">James Harden</option>
+        <option value="6">Kevin Durant</option>
+        <option value="7">Chris Paul</option>
+        <option value="8">Russell Westbrook</option>
+        <option value="9">Manu Ginobli</option>
+        <option value="10">Kawhi Leonard</option>
+        <option value="11">Jimmy Buttler</option>
+        <option value="12">Carmelo Anthony</option>
+        <option value="13">Isaiah Thomas</option>
+        <option value="14">Kyrie Irving</option>
+        <option value="15">Dwayne Wade</option>
+        <option value="16">Derrick Rose</option>
+        <option value="17">John Wall</option>
+        <option value="18">Paul George</option>
+        <option value="19">Lebron James</option>
+        <option value="20">DeMar DeRozan</option>
+        <option value="21">Giannis Antetokounmpo</option>
+    </select>
+</div>
+</form>
+<button onclick="go()">Go</button>
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+<script>
+
+function go(){
+  var v1 = document.getElementById("select-native-1");
+  charty(v1.value,v2.value);
+}
+
+
+function charty(index1) {
+	cd1 = lol[index1].clockdiff;
+	dc1 = lol[index1].dribblecount;
+	dd1 = lol[index1].defdistance;
+	tt1 = lol[index1].touchtime;
+	t1 = lol[index1].score;
+	name1 = lol[index1].name;
+
+  cd2 = lol[index2].clockdiff;
+  dc2 = lol[index2].dribblecount;
+  dd2 = lol[index2].defdistance;
+  tt2 = lol[index2].touchtime;
+  t2 = lol[index2].score;
+  name2 = lol[index2].name;
+
+
+
+var ctx = document.getElementById('myChart').getContext("2d");
+var myChart = new Chart(ctx, {
+  type: 'radar',
+  data: {
+    labels: ["ClockDiff", "DribbleCount", "DefDistance", "TouchTime"],
+    datasets: [{
+      label: name1,
+      backgroundColor: "rgba(255,215,0,0.4)",
+      borderColor: "rgba(255,215,0,1)",
+      data: [cd1, dc1, dd1, tt1]
+    }, {
+      label: name2,
+      backgroundColor: "rgba(255,0,0,0.4)",
+      borderColor: "rgba(255,0,0,1)",
+      data: [cd2, dc2, dd2, tt2]
+    }]
+  }
+});
+
+//document.getElementById(index).innerHTML += '<br>Some new content!';
+
+}
+
+function total(index){
+  tag = 't' + index;
+  t = lol[index].score;
+  console.log(tag);
+  document.getElementById(tag).innerHTML += ('Totat:' + t);
+}
+
+
+</script>
