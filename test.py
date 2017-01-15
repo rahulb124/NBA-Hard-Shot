@@ -103,6 +103,7 @@ def find_stats(name,player_id):
     player_sucks['percentage3'] = p3
     player_sucks['attempts2'] = a2
     player_sucks['attempts3'] = a3
+    player_sucks['name'] = name
     lost.append(player_sucks.copy())
     players.append(player_stats.copy())
 
