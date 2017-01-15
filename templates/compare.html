@@ -1,0 +1,236 @@
+<!doctype html>
+<head>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
+
+
+<style>
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
+	    text-shadow: none  !important;
+
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+li a.active {
+    color: white !important;
+    background-color: #38c;
+}
+.active {
+    background-color: #4CAF50;
+}
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.h2 {
+	position:center;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+#myInput {
+    border-box: box-sizing;
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 230px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #ddd}
+
+.show {display:block;}
+
+.container {
+  width: 80%;
+  margin: 15px auto;
+}
+
+.hide {
+  display: none;
+}
+
+</style>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+var dump = $.getJSON( "/", function() {
+  console.log( "success" );
+  window.lol = JSON.parse(dump.responseText);
+})
+</script>
+<title>NBA Hard Shot Analysis</title>
+<ul>
+  <li><a class="active" href="/p">Players</a></li>
+  <li><a href="/s">Sort</a></li>
+  <li><a href="/c">Compare</a></li>
+  <li><a href="/a">About</a></li>
+</ul>
+<h1>Players: NBA Hard Shot</h1>
+<form>
+<div class="ui-field-contain">
+    <label for="select-native-1">Player 1:</label>
+    <select name="select-native-1" id="select-native-1">
+        <option value="0">Damian Lillard</option>
+        <option value="1">Stephen Curry</option>
+        <option value="2">Demarcus Cousins</option>
+        <option value="3">Klay Thompson</option>
+        <option value="4">Draymond Green</option>
+        <option value="5">James Harden</option>
+        <option value="6">Kevin Durant</option>
+        <option value="7">Chris Paul</option>
+        <option value="8">Russell Westbrook</option>
+        <option value="9">Manu Ginobli</option>
+        <option value="10">Kawhi Leonard</option>
+        <option value="11">Jimmy Buttler</option>
+        <option value="12">Carmelo Anthony</option>
+        <option value="13">Isaiah Thomas</option>
+        <option value="14">Kyrie Irving</option>
+        <option value="15">Dwayne Wade</option>
+        <option value="16">Derrick Rose</option>
+        <option value="17">John Wall</option>
+        <option value="18">Paul George</option>
+        <option value="19">Lebron James</option>
+        <option value="20">DeMar DeRozan</option>
+        <option value="21">Giannis Antetokounmpo</option>
+    </select>
+    <label for="select-native-2">Player 2:</label>
+    <select name="select-native-2" id="select-native-2">
+        <option value="0">Damian Lillard</option>
+        <option value="1">Stephen Curry</option>
+        <option value="2">Demarcus Cousins</option>
+        <option value="3">Klay Thompson</option>
+        <option value="4">Draymond Green</option>
+        <option value="5">James Harden</option>
+        <option value="6">Kevin Durant</option>
+        <option value="7">Chris Paul</option>
+        <option value="8">Russell Westbrook</option>
+        <option value="9">Manu Ginobli</option>
+        <option value="10">Kawhi Leonard</option>
+        <option value="11">Jimmy Buttler</option>
+        <option value="12">Carmelo Anthony</option>
+        <option value="13">Isaiah Thomas</option>
+        <option value="14">Kyrie Irving</option>
+        <option value="15">Dwayne Wade</option>
+        <option value="16">Derrick Rose</option>
+        <option value="17">John Wall</option>
+        <option value="18">Paul George</option>
+        <option value="19">Lebron James</option>
+        <option value="20">DeMar DeRozan</option>
+        <option value="21">Giannis Antetokounmpo</option>
+    </select>
+</div>
+</form>
+<button onclick="go()">Go</button>
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+<script>
+
+function go(){
+  var v1 = document.getElementById("select-native-1");
+  var v2 = document.getElementById("select-native-2");
+  charty(v1.value,v2.value);
+}
+
+
+function charty(index1,index2) {
+	cd1 = lol[index1].clockdiff;
+	dc1 = lol[index1].dribblecount;
+	dd1 = lol[index1].defdistance;
+	tt1 = lol[index1].touchtime;
+	t1 = lol[index1].score;
+	name1 = lol[index1].name;
+
+  cd2 = lol[index2].clockdiff;
+  dc2 = lol[index2].dribblecount;
+  dd2 = lol[index2].defdistance;
+  tt2 = lol[index2].touchtime;
+  t2 = lol[index2].score;
+  name2 = lol[index2].name;
+
+
+
+var ctx = document.getElementById('myChart').getContext("2d");
+var myChart = new Chart(ctx, {
+  type: 'radar',
+  data: {
+    labels: ["ClockDiff", "DribbleCount", "DefDistance", "TouchTime"],
+    datasets: [{
+      label: name1,
+      backgroundColor: "rgba(255,215,0,0.4)",
+      borderColor: "rgba(255,215,0,1)",
+      data: [cd1, dc1, dd1, tt1]
+    }, {
+      label: name2,
+      backgroundColor: "rgba(255,0,0,0.4)",
+      borderColor: "rgba(255,0,0,1)",
+      data: [cd2, dc2, dd2, tt2]
+    }]
+  }
+});
+
+//document.getElementById(index).innerHTML += '<br>Some new content!';
+
+}
+
+function total(index){
+  tag = 't' + index;
+  t = lol[index].score;
+  console.log(tag);
+  document.getElementById(tag).innerHTML += ('Totat:' + t);
+}
+
+
+</script>

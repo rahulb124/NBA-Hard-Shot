@@ -1,0 +1,455 @@
+<!doctype html>
+<head>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
+
+
+<style>
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.h2 {
+	position:center;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+#myInput {
+    border-box: box-sizing;
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 230px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #ddd}
+
+.show {display:block;}
+
+.container {
+  width: 80%;
+  margin: 15px auto;
+}
+
+.hide {
+  display: none;
+}
+
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+
+jQuery.fn.sortDivs = function sortDivs() {
+    $("> div", this[0]).sort(dec_sort).appendTo(this[0]);
+    function dec_sort(a, b){ return ($(b).data("sort")) < ($(a).data("sort")) ? 1 : -1; }
+}
+
+$(document).ready(function () {
+  $('#select-native-1').change(function () {
+  	if ($(this).val() == -1){
+  		console.log('triggered');
+  		$(".group").show();
+  	} else{
+  		$('.group').hide();
+    $('#'+$(this).val()).show();
+   }
+  })
+});
+
+</script>
+<script>
+var dump = $.getJSON( "/", function() {
+  console.log( "success" );
+  window.lol = JSON.parse(dump.responseText);
+})
+</script>
+<title>NBA Best Shooter Analysis</title>
+<h1>NBA Stat Analysis</h1>
+<button onclick="data()">Load Data</button>
+<form>
+<div class="ui-field-contain">
+    <label for="select-native-1">Players:</label>
+    <select name="select-native-1" id="select-native-1">
+        <option value='-1'>All Players</option>
+        <option value="0">Damian Lillard</option>
+        <option value="1">Stephen Curry</option>
+        <option value="2">Demarcus Cousins</option>
+        <option value="3">Klay Thompson</option>
+        <option value="4">Draymond Green</option>
+        <option value="5">James Harden</option>
+        <option value="6">Kevin Durant</option>
+        <option value="7">Chris Paul</option>
+        <option value="8">Russell Westbrook</option>
+        <option value="9">Manu Ginobli</option>
+        <option value="10">Kawhi Leonard</option>
+        <option value="11">Jimmy Buttler</option>
+        <option value="12">Carmelo Anthony</option>
+        <option value="13">Isaiah Thomas</option>
+        <option value="14">Kyrie Irving</option>
+        <option value="15">Dwayne Wade</option>
+        <option value="16">Derrick Rose</option>
+        <option value="17">John Wall</option>
+        <option value="18">Paul George</option>
+        <option value="19">Lebron James</option>
+        <option value="20">DeMar DeRozan</option>
+        <option value="21">Giannis Antetokounmpo</option>
+    </select>
+</div>
+
+
+<div id='0' class='group'>
+	<div class="container">
+  		<h2>Damian Lillard</h2>
+  		<div>
+    	<canvas id="myChart0"></canvas>
+  		</div>
+  		<p1 id = t0></p1>
+	</div>
+</div>
+<div id='1' class='group'>
+	<div class="container">
+  		<h2>Stephen Curry</h2>
+  		<div>
+    	<canvas id="myChart1"></canvas>
+  		</div>
+  		<p1 id = t1></p1>
+	</div>
+</div>
+<div id='2' class='group'>
+	<div class="container">
+  		<h2>Demarcus Cousins</h2>
+  		<div>
+    	<canvas id="myChart2"></canvas>
+  		</div>
+  		<p1 id = t2></p1>
+	</div>
+</div>
+<div id='3' class='group'>
+	<div class="container">
+  		<h2>Klay Thompson</h2>
+  		<div>
+    	<canvas id="myChart3"></canvas>
+  		</div>
+  		<p1 id = t3></p1>
+	</div>
+</div>
+<div id='4' class='group'>
+	<div class="container">
+  		<h2>Draymond Green</h2>
+  		<div>
+    	<canvas id="myChart4"></canvas>
+  		</div>
+  		<p1 id = t4></p1>
+	</div>
+</div>
+<div id='5' class='group'>
+	<div class="container">
+  		<h2>James Harden</h2>
+  		<div>
+    	<canvas id="myChart5"></canvas>
+  		</div>
+  		<p1 id = t5></p1>
+	</div>
+</div>
+<div id='6' class='group'>
+	<div class="container">
+  		<h2>Kevin Durant</h2>
+  		<div>
+    	<canvas id="myChart6"></canvas>
+  		</div>
+  		<p1 id = t6></p1>
+	</div>
+</div>
+<div id='7' class='group'>
+	<div class="container">
+  		<h2>Chris Paul</h2>
+  		<div>
+    	<canvas id="myChart7"></canvas>
+  		</div>
+  		<p1 id = t7></p1>
+	</div>
+</div>
+<div id='8' class='group'>
+	<div class="container">
+  		<h2>Russell Westbrook</h2>
+  		<div>
+    	<canvas id="myChart8"></canvas>
+  		</div>
+  		<p1 id = t8></p1>
+	</div>
+</div>
+<div id='9' class='group'>
+	<div class="container">
+  		<h2>Manu Ginobli</h2>
+  		<div>
+    	<canvas id="myChart9"></canvas>
+  		</div>
+  		<p1 id = t9></p1>
+	</div>
+</div>
+<div id='10' class='group'>
+	<div class="container">
+  		<h2>Kawhi Leonard</h2>
+  		<div>
+    	<canvas id="myChart10"></canvas>
+  		</div><p1 id = t10></p1>
+	</div>
+</div>
+<div id='11' class='group'>
+	<div class="container">
+  		<h2>Jimmy Butler</h2>
+  		<div>
+    	<canvas id="myChart11"></canvas>
+  		</div>
+  		<p1 id = t11></p1>
+	</div>
+</div>
+<div id='12' class='group'>
+	<div class="container">
+  		<h2>Carmelo Anthony</h2>
+  		<div>
+    	<canvas id="myChart12"></canvas>
+  		</div>
+  		<p1 id = t12></p1>
+	</div>
+</div>
+<div id='13' class='group'>
+	<div class="container">
+  		<h2>Isaiah Thomas</h2>
+  		<div>
+    	<canvas id="myChart13"></canvas>
+  		</div>
+  		<p1 id = t13></p1>
+	</div>
+</div>
+<div id='14' class='group'>
+	<div class="container">
+  		<h2>Kyrie Irving</h2>
+  		<div>
+    	<canvas id="myChart14"></canvas>
+  		</div>
+  		<p1 id = t14></p1>
+	</div>
+</div>
+<div id='15' class='group'>
+	<div class="container">
+  		<h2>Dwayne Wade</h2>
+  		<div>
+    	<canvas id="myChart15"></canvas>
+  		</div>
+  		<p1 id = t15></p1>
+	</div>
+</div>
+<div id='16' class='group'>
+	<div class="container">
+  		<h2>Derrick Rose</h2>
+  		<div>
+    	<canvas id="myChart16"></canvas>
+  		</div>
+  		<p1 id = t16></p1>
+	</div>
+</div>
+<div id='17' class='group'>
+	<div class="container">
+  		<h2>John Wall</h2>
+  		<div>
+    	<canvas id="myChart17"></canvas>
+  		</div>
+  		<p1 id = t17></p1>
+	</div>
+</div>
+<div id='18' class='group'>
+	<div class="container">
+  		<h2>Paul George</h2>
+  		<div>
+    	<canvas id="myChart18"></canvas>
+  		</div>
+  		<p1 id = t18></p1>
+	</div>
+</div>
+<div id='19' class='group'>
+	<div class="container">
+  		<h2>Lebron James</h2>
+  		<div>
+    	<canvas id="myChart19"></canvas>
+  		</div>
+  		<p1 id = t19></p1>
+	</div>
+</div>
+<div id='20' class='group'>
+	<div class="container">
+  		<h2>DeMar DeRozan</h2>
+  		<div>
+    	<canvas id="myChart20"></canvas>
+  		</div>
+  		<p1 id = t20></p1>
+	</div>
+</div>
+<div id='21' class='group'>
+	<div class="container">
+  		<h2>Giannis Antetokounmpo</h2>
+  		<div>
+    	<canvas id="myChart21"></canvas>
+  		</div>
+  		<p1 id = t21></p1>
+	</div>
+</div>
+</form>
+<script>
+function cons() {
+    for (i = 0; i < lol.length; i++) { 
+    console.log(lol[i].name);
+}
+}
+</script>
+<script>
+acd = 0;
+adc = 0;
+add = 0;
+att = 0;
+at = 0;
+
+function charty(chartnum,index) {
+	cd = lol[index].clockdiff;
+	dc = lol[index].dribblecount;
+	dd = lol[index].defdistance;
+	tt = lol[index].touchtime;
+	t = lol[index].score;
+	name = lol[index].name;
+
+for (i = 0; i < lol.length; i++) { 
+    acd += lol[i].clockdiff ;
+    adc += lol[i].dribblecount ;
+    add += lol[i].defdistance ;
+    att += lol[i].touchtime ;
+    at += lol[i].score ;
+
+}
+
+acd = acd / 22;
+adc = adc / 22;
+add = add / 22;
+att = att / 22;
+at = at / 22;
+
+
+var ctx = document.getElementById(chartnum).getContext("2d");
+var myChart = new Chart(ctx, {
+  type: 'radar',
+  data: {
+    labels: ["ClockDiff", "DribbleCount", "DefDistance", "TouchTime"],
+    datasets: [{
+      label: name,
+      backgroundColor: "rgba(255,215,0,0.4)",
+      borderColor: "rgba(255,215,0,1)",
+      data: [cd, dc, dd, tt]
+    }, {
+      label: 'average',
+      backgroundColor: "rgba(255,0,0,0.4)",
+      borderColor: "rgba(255,0,0,1)",
+      data: [acd, adc, add, att]
+    }]
+  }
+});
+
+//document.getElementById(index).innerHTML += '<br>Some new content!';
+
+}
+
+function total(index){
+  tag = 't' + index;
+  t = lol[index].score;
+  console.log(tag);
+  document.getElementById(tag).innerHTML += ('Totat:' + t);
+}
+function data(){
+	charty('myChart0',0);
+	charty('myChart1',1);
+	charty('myChart2',2);
+	charty('myChart3',3);
+	charty('myChart4',4);
+	charty('myChart5',5);
+	charty('myChart6',6);
+	charty('myChart7',7);
+	charty('myChart8',8);
+	charty('myChart9',9);
+	charty('myChart10',10);
+	charty('myChart11',11);
+	charty('myChart12',12);
+	charty('myChart13',13);
+	charty('myChart14',14);
+	charty('myChart15',15);
+	charty('myChart16',16);
+	charty('myChart17',17);
+	charty('myChart18',18);
+	charty('myChart19',19);
+	charty('myChart20',20);
+	charty('myChart21',21);
+	total(0);
+	total(1);
+	total(2);
+	total(3);
+	total(4);
+	total(5);
+	total(6);
+	total(7);
+	total(8);
+	total(9);
+	total(10);
+	total(11);
+	total(12);
+	total(13);
+	total(14);
+	total(15);
+	total(16);
+	total(17);
+	total(18);
+	total(19);
+	total(20);
+	total(21);
+
+
+
+}
+
+function eventFire(el, etype){
+  if (el.fireEvent) {
+    el.fireEvent('on' + etype);
+  } else {
+    var evObj = document.createEvent('Events');
+    evObj.initEvent(etype, true, false);
+    el.dispatchEvent(evObj);
+  }
+}
+</script>

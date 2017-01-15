@@ -1,0 +1,160 @@
+<!doctype html>
+<head>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
+
+
+<style>
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
+	    text-shadow: none  !important;
+
+}
+ul {                                                                                                                          
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+li a.active {
+    color: white !important;
+    background-color: #38c;
+}
+.active {
+    background-color: #4CAF50;
+}
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.h2 {
+	position:center;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+#myInput {
+    border-box: box-sizing;
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 230px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #ddd}
+
+.show {display:block;}
+
+.container {
+  width: 80%;
+  margin: 15px auto;
+}
+
+.hide {
+  display: none;
+}
+
+</style>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+
+jQuery.fn.sortDivs = function sortDivs() {
+    $("> div", this[0]).sort(dec_sort).appendTo(this[0]);
+    function dec_sort(a, b){ return ($(b).data("sort")) < ($(a).data("sort")) ? 1 : -1; }
+}
+
+$(document).ready(function () {
+  $('#select-native-1').change(function () {
+  	if ($(this).val() == -1){
+  		console.log('triggered');
+  		$(".group").show();
+  	} else{
+  		$('.group').hide();
+    $('#'+$(this).val()).show();
+   }
+  })
+});
+
+</script>
+<script>
+var dump = $.getJSON( "/", function() {
+  console.log( "success" );
+  window.myList = JSON.parse(dump.responseText);
+})
+
+
+</script>
+<body>
+<title>NBA Hard Shot Analysis</title>
+<ul>
+  <li><a href="/p">Players</a></li>
+  <li><a href="/s">Sort</a></li>
+  <li><a href="/c">Compare</a></li>
+  <li><a class="active" href="/a">About</a></li>
+</ul>
+<h1>About: NBA Hard Shot</h1>
+<h2>What is this?</h2>
+<p1>
+This webapp uses a python backend to scrape stats.nba.com to acquire the raw data for shots of the top 2016-2017 all stars in the NBA.  The backend then sends the front end the data that is important and the frontend shows the analysis of the data.  The main focus of this webapp is to determine which NBA All-star is able to make the most difficult shots(eg:Low time on shotclock, tight defender defense, dribbles, and touch time) the most consistently and the most often.
+</p1>
+<h2>What can I do on the webapp?</h2>
+<p1>You can look at the Radar chart for each player to see which difficult factor each player excels at while compared to the average of All-stars.  You can sort a table by each factor and overall total to see which player ranks where. And finally you can compare the radar charts for 2 specific players.  </p1>
+<br>
+<br>
+<br>
+<br>
+<p2> All data comes from the current season (2016-2017).</p2>
+</body>
+
+
+
+
