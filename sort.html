@@ -126,7 +126,7 @@ $(document).ready(function () {
 
 </script>
 <script>
-var dump = $.getJSON( "/dump.JSON", function() {
+var dump = $.getJSON( "/dump.json", function() {
   console.log( "success" );
   window.myList = JSON.parse(dump.responseText);
 })
