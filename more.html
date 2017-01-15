@@ -158,26 +158,25 @@ var myBubbleChart = new Chart(ctx,{
     data: data
 });
 
-var data = {
-    datasets: [
-        {
-            label: name,
-            data: [
-                {
-                    x: 2,
-                    y: p2,
-                    r: a2
-                },
-                {
-                    x: 3,
-                    y: p3,
-                    r: a3
-                }
-            ],
-            backgroundColor:"#FF6384",
-            hoverBackgroundColor: "#FF6384",
+
+data: {
+    datasets: [{
+      label: name,
+      data: [{
+        x: 2,
+        y: p2,
+        r: a2
+      }, 
+      {
+        x: 3,
+        y: p3,
+        r: a3
+      }],
+      backgroundColor:"#FF6384",
+      hoverBackgroundColor: "#FF6384",
         }]
 };
+
 //document.getElementById(index).innerHTML += '<br>Some new content!';
 
 }
