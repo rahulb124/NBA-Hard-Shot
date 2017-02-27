@@ -125,7 +125,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def dump():
-  return json.dumps(lost)
+  return json.dumps(players)
 
 @app.route('/p')
 def player():
