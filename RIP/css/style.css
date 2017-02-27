@@ -2528,12 +2528,11 @@ z-index:2;
 	
 /*	parallax bg sections
 ------------------------------------------------*/
-#facts.parallax-section { background:url(/APES/deforestation.jpg) center center repeat; background-size: cover; } /* index */
+#facts.parallax-section { background:url(/RIP/devices.jpeg) center center repeat; background-size: cover; } /* index */
 #testimonials.parallax-section { background:url(../pict.jpeg) center center repeat; background-size: cover; } /* index */
 #passionate.parallax-section { background:url(../pict.jpeg) center center repeat; background-size: cover; } /* index */
-#quote.parallax-section { background:url(/APES/israelbillnye.jpg) center center repeat; background-size: cover; background-color: black; } /* index-headeroverlay*/
+#quote.parallax-section { background:url(/RIP/israelbillnye.jpg) center center repeat; background-size: cover; background-color: black; } /* index-headeroverlay*/
 #promo-wrapper.parallax-section {background:url(../pict.jpeg) center center no-repeat; background-size: cover; }
-#quote2.parallax-section { background:url(http://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Flag_of_Afghanistan_%281880–1901%29.svg/900px-Flag_of_Afghanistan_%281880–1901%29.svg.png) center center no-repeat; background-size: auto; background-color: black; } /* index-headeroverlay*/
 
 /*	dark bg sections
 ------------------------------------------------*/
