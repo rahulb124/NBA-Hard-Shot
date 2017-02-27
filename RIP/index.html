@@ -142,7 +142,7 @@
 
                   <div class="column one-half">
                         
-                        <p>As you, <b>The Federal Bureau of Investigation</b>, should know, after the San Bernadino terroist attack in December of 2015, the FBI wanted help from Apple Inc. to "unclock" the iPhone of one of the terrorist from the attack.  Apple, however <b>opposed</b> this and declined to help.  As a result, you, the goverment agencies, got the Justice Department to order Apple to unlock the security on the phone, in result creating massive <b>legal complications</b>.  Following Apple declining to unlock the phone, you hired professional hackers on a one time basis to "hack" the security features on the phone.
+                        <p>As you, <b>The Federal Bureau of Investigation</b>, should know, after the San Bernadino terrorist attack in December of 2015, the FBI wanted help from Apple Inc. to "unlock" the iPhone of one of the terrorists from the attack.  Apple, however <b>opposed</b> this and declined to help.  As a result, you, the goverment agencies, got the Justice Department to order Apple to unlock the security on the phone, in result creating massive <b>legal complications</b>.  Following Apple declining to unlock the phone, you hired professional hackers on a one time basis to "hack" the security features on the phone.
                         </p>
                         <p>Myself and many others, do not agree with the FBI's demand that companies such as Apple should be required to <b>risk the personal data</b> of its customers, as well as from the position of a customer I would not want my own personal data to be decrypted for any reason.
                   </div>
@@ -170,121 +170,6 @@
             </div>
             </div>
             <div>
-            	<center>
-            <h1>Duplex or Savings Calculator </h1> </center>
-			
-
-
-
-
-
-			
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
-
-
-	
-
-
-
-	
-
-	<script type="text/javascript" src="/RIP/js/number_format.js"></script>
-	<script type="text/javascript">
-	function calculate(wsheets){
-		if(wsheets!=''){
-			var decimals = 2;
-			var exchangerate = "1.0"; //rate to EURO
-			var dec_point = ".";
-			var thousands_sep = ",";
-			var sheetsYear = ((wsheets*52)/2) + " ";
-			var reamsYear  = ((wsheets*52)/2)/500;
-			var costWeek   = (((wsheets)/2)/500)*(4*exchangerate)*1.57;
-			var costYear   = (((wsheets*52)/2)/500)*(4*exchangerate)*1.57;
-			var treesYear  = (((wsheets*52)/2)/8333.3) + " ";
-		
-			$('#sheetsYear').html(number_format (sheetsYear, decimals, dec_point, thousands_sep));
-			$('#reamsYear').html(number_format (reamsYear, decimals, dec_point, thousands_sep));
-			$('#costWeek').html(number_format (costWeek, decimals, dec_point, thousands_sep));
-			$('#costYear').html(number_format (costYear, decimals, dec_point, thousands_sep));
-			$('#treesYear').html(number_format (treesYear, decimals, dec_point, thousands_sep));
-		}else{
-			alert('Please insert a value.');
-			$("wsheets").focus();
-		}
-	}
-
-	function runCalc(wsheets){
-		if ($("#wsheets").val() == "" || $("#wsheets").val() == null){
-			alert("Please insert a value.");
-			$("#wsheets").focus();
-			return false;
-		}
-		if(!$('#wsheets').val().match('^(0|[1-9][0-9]*)$')) { 
-			alert("Please insert only numbers.");
-			$("#wsheets").focus();
-			$("#wsheets").val("");
-			return false;
-		}
-		calculate(wsheets);
-	}
-	</script>
-
-
-	
-	<center>
-	<div class="cscbox">
-		<div class="csc">
-			<div class="cscHead">
-				Savings calculator
-			</div>
-			<div class="cscContent">
-				<div class="csc_intro">
-					How many pages do you print weekly?
-				</div>
-				<input type="Text" id="wsheets" name="wsheets" class="csc_input"><br>
-				<br>
-				<input type="button" value="calculate" class="csc_button" onclick="runCalc($('#wsheets').val());"><br>
-				<br>
-				<div id="csc_res_box">
-					<b>By printing in duplex (double sided) you can save up to:</b>
-					<div style="width:100%;">
-						<div style="background-color:#EFEFEF; padding:3px;"><span id="sheetsYear" class="csc_result_context"></span>&nbsp;sheets of paper per year</div>
-						<div style="padding:3px;"><span id="reamsYear" class="csc_result_context"></span>&nbsp;reams per year*</div>
-						<div style="background-color:#EFEFEF; padding:3px;">$<span id="costWeek" class="csc_result_context"></span>&nbsp; per week**</div>
-						<div style="padding:3px;">$<span id="costYear" class="csc_result_context"></span>&nbsp; per year**</div>
-						<div style="background-color:#EFEFEF; padding:3px;"><span id="treesYear" class="csc_result_context"></span>&nbsp;trees per year***</div>
-					</div>
-				</div>
-				
-				<div class="csc_ref">
-					*Quantity of paper being 500 sheets<br>**Average cost for one ream of uncoated virgin A4 printing paper is 4 €<br>***24 trees can produce a ton of uncoated virgin paper.
-				</div>
-			</div>
-			</center>
 		</div>
 
 
