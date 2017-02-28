@@ -1455,8 +1455,9 @@ zoom: 1;
 .srcaption-bigwhite, .srcaption-mediumwhite, .srcaption-smallwhite, .srcaption-miniwhite {
 	font-family: 'Raleway'; 
 	font-weight: 400;
-	color: #ffffff;
+	color: darkgrey;
 	font-size: 100px;
+	font-weight: bold;
 	line-height: 120px;
 	}
 	
