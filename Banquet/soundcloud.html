@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <script type="text/javascript" src="/js/lib/dummy.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+
+      <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  
+      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+
+<script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+<script>
+SC.initialize({
+  client_id: 'sd1q8WOhv9wvyCiSzGZdYf9szcx4LD52'
+});
+
+// stream track id 293
+SC.stream('/tracks/293').then(function(player){
+  //player.play();
+});
+</script>
+<script>
+// find all tracks with the genre 'punk' that have a tempo greater than 120 bpm.
+SC.get('/tracks', {
+  title: 'broke kidZ'
+}).then(function(tracks) {
+  //console.log(tracks);
+});
+</script>
+
+  
+      <link rel="stylesheet" type="text/css" href="https://developer.spotify.com/web-api/static/css/cached.css">
+
+  <style type="text/css">
+    body {
+  padding: 20px;
+}
+
+#search-form,
+.form-control {
+  margin-bottom: 20px;
+}
+
+.cover {
+  width: 300px;
+  height: 300px;
+  display: inline-block;
+  background-size: cover;
+}
+
+.cover:hover {
+  cursor: pointer;
+}
+
+.cover.playing {
+  border: 5px solid #e45343;
+}
+
+  </style>
+
+
+  
+</head>
+<body>
+    <div id="buttons">
+      <label> <input id="query" value='cats' type="text"/><button id="search-button" disabled onclick="search()">Search</button></label>
+    </div>
+    <div id="search-container">
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="auth.js"></script>
+    <script src="search.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+  </body>
+
+</html>
