@@ -82,10 +82,7 @@
     <div class="navbar-header">
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a data-ajax="false" href="/about.html">About</a></li>
-      <li><a data-ajax="false" href="/players.html">Players</a></li>
-      <li><a data-ajax="false" href="/compare.html">Compare</a></li>
-      <li><a data-ajax="false" href="/sort.html">Sort</a></li>
+      <li class="active"><a data-ajax="false" href="/calhacks/index.html">Dashboard</a></li>
     </ul>
   </div>
 </nav>
@@ -120,6 +117,8 @@ function emergencyupdate(eAP, APL){
 		for (i = 0; i < APL.length; i++) {
 			if (APL[i].id != dangerid && samefloorid.includes(APL[i].id)) {
 				APL[i].percent = Math.round(100/(samefloorid.length - 1));
+
+
 
 			}
 		}
@@ -219,6 +218,8 @@ $("#example-table").tabulator("setData", tabledata);
 <script>
 document.getElementById("myList").onchange = function() {
 	emergencyupdate(APList[this.value],APList);
+	APList[this.value].percent = 0;
+	APList[this.value].clients = 0;
 	var tabledata = [
     {id:1, name:APList[0].name, percent:APList[0].percent, client:APList[0].clients, lev:APList[0].level},
     {id:2, name:APList[1].name, percent:APList[1].percent, client:APList[1].clients, lev:APList[1].level},
