@@ -109,11 +109,11 @@ class AccessPoint {
     };
 function emergencyupdate(eAP, APL){
 		var dangerfloor = eAP.level;
+		console.log(dangerfloor);
 		var dangerid = eAP.id;
 		var samefloorid = [];
 		for (i = 0; i < APL.length; i++) {
 			if (APL[i].level == dangerfloor) {
-				console.log(APL[i].id);
 				samefloorid.push(APL[i].id);
 			}
 		}
