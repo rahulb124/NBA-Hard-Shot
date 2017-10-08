@@ -237,6 +237,8 @@ $("#example-table").tabulator("setData", tabledata);
     	</script>
     </div>
 </div>
+<center>
+Which Access Point must be evacuated:
 <form>
 <select id="myList" >
   <option value="default">None</option>
@@ -255,7 +257,8 @@ $("#example-table").tabulator("setData", tabledata);
   <option value=12>12</option>
   <option value=13>13</option>  
 </select>
-<form>
+</form>
+</center>
 <script>
 document.getElementById("myList").onchange = function() {
 	emergencyupdate(APList[this.value],APList);
