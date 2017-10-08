@@ -99,7 +99,7 @@ var dump = $.getJSON( "/calhacks/scape.json", function() {
 </script>
 <script>
 class AccessPoint {
-   	constructor(id,name,clients,percent, levels){
+   	constructor(id,name,clients,percent, level){
         this.id = id;
         this.name = name;
         this.clients = clients;
@@ -107,6 +107,22 @@ class AccessPoint {
         this.level = level;
        }
     };
+function emergencyupdate(eAP, APL){
+		var dangerfloor = eAP.level;
+		var dangerid = eAP.id;
+		var samefloorid = [];
+		for (i = 0; i < APL.length; i++) {
+			if (APL[i].level == dangerfloor) {
+				samefloorid.append(APL[i].id);
+			}
+		}
+		for (i = 0; i < APL.length; i++) {
+			if (APL[i].id != dangerid && samefloorid.includes(APL[i])) {
+				APL[i].percent = (100/(samefloorid.length - 1));
+			}
+		}
+
+};
 
 var AP0 = new AccessPoint(13803418528385,"Microsoft Bar", 75, 20, 1);
 var AP1 = new AccessPoint(13803418551334,"Concur", 42, 30, 1);
@@ -122,6 +138,9 @@ var AP10 = new AccessPoint(13803418550705,"Stadium Club Center", 15, 40, 3);
 var AP11 = new AccessPoint(13803418544494,"Stadium Mezzanine Center", 18, 20, 4);
 var AP12 = new AccessPoint(13803418531126,"Stadium Mezzanine Left", 3, 40, 4);
 var AP13 = new AccessPoint(13803418549765,"Stadium Club Right", 15, 30, 3);
+
+var APList = [AP0,AP1,AP2,AP3,AP4,AP5,AP6,AP7,AP8,AP9,AP10,AP11,AP12,AP13]
+console.log(APList);
 </script>
 
 
