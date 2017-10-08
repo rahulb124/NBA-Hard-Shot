@@ -102,8 +102,44 @@ class AccessPoint {
         this.clients = clients;
         this.percent = percent;
         this.level = level;
+        this.optimization = 0;
        }
     };
+
+function optimizationnation(APL){
+	floor1 = 0;
+	floor2 = 0;
+	floor3 = 0;
+	floor4 = 0;
+	for (i = 0; i < APL.length; i++){
+		if (APL[i].level == 1){
+			floor1 += APL[i].clients;
+		}
+		if (APL[i].level == 2){
+			floor2 += APL[i].clients;
+		}
+		if (APL[i].level == 3){
+			floor3 += APL[i].clients;
+		}
+		if (APL[i].level == 4){
+			floor4 += APL[i].clients;
+		}
+	}
+	for (i = 0; i < APL.length; i++){
+		if (APL[i].level == 1){
+			APL[i].optimization = Math.round((APL[i].clients / floor1) * 100 / APL[i].percent * 100)
+		}
+		if (APL[i].level == 2){
+			APL[i].optimization = Math.round((APL[i].clients / floor2) * 100 / APL[i].percent * 100)
+		}
+		if (APL[i].level == 3){
+			APL[i].optimization = Math.round((APL[i].clients / floor3) * 100 / APL[i].percent * 100)
+		}
+		if (APL[i].level == 4){
+			APL[i].optimization = Math.round((APL[i].clients / floor4) * 100 / APL[i].percent * 100)
+		}
+	}
+};
 function emergencyupdate(eAP, APL){
 		var dangerfloor = eAP.level;
 		var dangerid = eAP.id;
@@ -145,6 +181,8 @@ var AP12 = new AccessPoint(13803418531126,"Stadium Mezzanine Left", 3, 40, 4);
 var AP13 = new AccessPoint(13803418549765,"Stadium Club Right", 15, 30, 3);
 
 var APList = [AP0,AP1,AP2,AP3,AP4,AP5,AP6,AP7,AP8,AP9,AP10,AP11,AP12,AP13]
+optimizationnation(APList);
+
 </script>
 
 
@@ -167,6 +205,7 @@ var APList = [AP0,AP1,AP2,AP3,AP4,AP5,AP6,AP7,AP8,AP9,AP10,AP11,AP12,AP13]
         {title:"Floor level", field:"lev", sorter:"number"},
         {title:"Floorpercent", field:"percent", align:"left", formatter:"progress"},
         {title:"Clients", field:"client"},
+        {title:"Optimitzation", field:"opt", align:"left", formatter:"progress"},
     ],
     rowClick:function(e, row){ //trigger an alert message when the row is clicked
         alert("Row " + row.getData().id + " Clicked!!!!");
@@ -175,20 +214,20 @@ var APList = [AP0,AP1,AP2,AP3,AP4,AP5,AP6,AP7,AP8,AP9,AP10,AP11,AP12,AP13]
 
 //define some sample data
 var tabledata = [
-    {id:1, name:APList[0].name, percent:APList[0].percent, client:APList[0].clients, lev:APList[0].level},
-    {id:2, name:APList[1].name, percent:APList[1].percent, client:APList[1].clients, lev:APList[1].level},
-    {id:3, name:APList[2].name, percent:APList[2].percent, client:APList[2].clients, lev:APList[2].level},
-    {id:4, name:APList[3].name, percent:APList[3].percent, client:APList[3].clients, lev:APList[3].level},
-    {id:5, name:APList[4].name, percent:APList[4].percent, client:APList[4].clients, lev:APList[4].level},
-    {id:6, name:APList[5].name, percent:APList[5].percent, client:APList[5].clients, lev:APList[5].level},
-    {id:7, name:APList[6].name, percent:APList[6].percent, client:APList[6].clients, lev:APList[6].level},
-    {id:8, name:APList[7].name, percent:APList[7].percent, client:APList[7].clients, lev:APList[7].level},
-    {id:9, name:APList[8].name, percent:APList[8].percent, client:APList[8].clients, lev:APList[8].level},
-    {id:10, name:APList[9].name, percent:APList[9].percent, client:APList[9].clients, lev:APList[9].level},
-    {id:11, name:APList[10].name, percent:APList[10].percent, client:APList[10].clients, lev:APList[10].level},
-    {id:12, name:APList[11].name, percent:APList[11].percent, client:APList[11].clients, lev:APList[11].level},
-    {id:13, name:APList[12].name, percent:APList[12].percent, client:APList[12].clients, lev:APList[12].level},
-    {id:14, name:APList[13].name, percent:APList[13].percent, client:APList[13].clients, lev:APList[13].level},
+    {id:1, name:APList[0].name, percent:APList[0].percent, client:APList[0].clients, lev:APList[0].level, opt:APList[0].optimization},
+    {id:2, name:APList[1].name, percent:APList[1].percent, client:APList[1].clients, lev:APList[1].level, opt:APList[1].optimization},
+    {id:3, name:APList[2].name, percent:APList[2].percent, client:APList[2].clients, lev:APList[2].level, opt:APList[2].optimization},
+    {id:4, name:APList[3].name, percent:APList[3].percent, client:APList[3].clients, lev:APList[3].level, opt:APList[3].optimization},
+    {id:5, name:APList[4].name, percent:APList[4].percent, client:APList[4].clients, lev:APList[4].level, opt:APList[4].optimization},
+    {id:6, name:APList[5].name, percent:APList[5].percent, client:APList[5].clients, lev:APList[5].level, opt:APList[5].optimization},
+    {id:7, name:APList[6].name, percent:APList[6].percent, client:APList[6].clients, lev:APList[6].level, opt:APList[6].optimization},
+    {id:8, name:APList[7].name, percent:APList[7].percent, client:APList[7].clients, lev:APList[7].level, opt:APList[7].optimization},
+    {id:9, name:APList[8].name, percent:APList[8].percent, client:APList[8].clients, lev:APList[8].level, opt:APList[8].optimization},
+    {id:10, name:APList[9].name, percent:APList[9].percent, client:APList[9].clients, lev:APList[9].level, opt:APList[9].optimization},
+    {id:11, name:APList[10].name, percent:APList[10].percent, client:APList[10].clients, lev:APList[10].level, opt:APList[10].optimization},
+    {id:12, name:APList[11].name, percent:APList[11].percent, client:APList[11].clients, lev:APList[11].level, opt:APList[11].optimization},
+    {id:13, name:APList[12].name, percent:APList[12].percent, client:APList[12].clients, lev:APList[12].level, opt:APList[12].optimization},
+    {id:14, name:APList[13].name, percent:APList[13].percent, client:APList[13].clients, lev:APList[13].level, opt:APList[12].optimization},
 ];
 
 //load sample data into the table
@@ -225,22 +264,23 @@ document.getElementById("myList").onchange = function() {
 	emergencyupdate(APList[this.value],APList);
 	APList[this.value].percent = 0;
 	APList[this.value].clients = 0;
-	var tabledata = [
-    {id:1, name:APList[0].name, percent:APList[0].percent, client:APList[0].clients, lev:APList[0].level},
-    {id:2, name:APList[1].name, percent:APList[1].percent, client:APList[1].clients, lev:APList[1].level},
-    {id:3, name:APList[2].name, percent:APList[2].percent, client:APList[2].clients, lev:APList[2].level},
-    {id:4, name:APList[3].name, percent:APList[3].percent, client:APList[3].clients, lev:APList[3].level},
-    {id:5, name:APList[4].name, percent:APList[4].percent, client:APList[4].clients, lev:APList[4].level},
-    {id:6, name:APList[5].name, percent:APList[5].percent, client:APList[5].clients, lev:APList[5].level},
-    {id:7, name:APList[6].name, percent:APList[6].percent, client:APList[6].clients, lev:APList[6].level},
-    {id:8, name:APList[7].name, percent:APList[7].percent, client:APList[7].clients, lev:APList[7].level},
-    {id:9, name:APList[8].name, percent:APList[8].percent, client:APList[8].clients, lev:APList[8].level},
-    {id:10, name:APList[9].name, percent:APList[9].percent, client:APList[9].clients, lev:APList[9].level},
-    {id:11, name:APList[10].name, percent:APList[10].percent, client:APList[10].clients, lev:APList[10].level},
-    {id:12, name:APList[11].name, percent:APList[11].percent, client:APList[11].clients, lev:APList[11].level},
-    {id:13, name:APList[12].name, percent:APList[12].percent, client:APList[12].clients, lev:APList[12].level},
-    {id:14, name:APList[13].name, percent:APList[13].percent, client:APList[13].clients, lev:APList[13].level},
+var tabledata = [
+    {id:1, name:APList[0].name, percent:APList[0].percent, client:APList[0].clients, lev:APList[0].level, opt:APList[0].optimization},
+    {id:2, name:APList[1].name, percent:APList[1].percent, client:APList[1].clients, lev:APList[1].level, opt:APList[1].optimization},
+    {id:3, name:APList[2].name, percent:APList[2].percent, client:APList[2].clients, lev:APList[2].level, opt:APList[2].optimization},
+    {id:4, name:APList[3].name, percent:APList[3].percent, client:APList[3].clients, lev:APList[3].level, opt:APList[3].optimization},
+    {id:5, name:APList[4].name, percent:APList[4].percent, client:APList[4].clients, lev:APList[4].level, opt:APList[4].optimization},
+    {id:6, name:APList[5].name, percent:APList[5].percent, client:APList[5].clients, lev:APList[5].level, opt:APList[5].optimization},
+    {id:7, name:APList[6].name, percent:APList[6].percent, client:APList[6].clients, lev:APList[6].level, opt:APList[6].optimization},
+    {id:8, name:APList[7].name, percent:APList[7].percent, client:APList[7].clients, lev:APList[7].level, opt:APList[7].optimization},
+    {id:9, name:APList[8].name, percent:APList[8].percent, client:APList[8].clients, lev:APList[8].level, opt:APList[8].optimization},
+    {id:10, name:APList[9].name, percent:APList[9].percent, client:APList[9].clients, lev:APList[9].level, opt:APList[9].optimization},
+    {id:11, name:APList[10].name, percent:APList[10].percent, client:APList[10].clients, lev:APList[10].level, opt:APList[10].optimization},
+    {id:12, name:APList[11].name, percent:APList[11].percent, client:APList[11].clients, lev:APList[11].level, opt:APList[11].optimization},
+    {id:13, name:APList[12].name, percent:APList[12].percent, client:APList[12].clients, lev:APList[12].level, opt:APList[12].optimization},
+    {id:14, name:APList[13].name, percent:APList[13].percent, client:APList[13].clients, lev:APList[13].level, opt:APList[12].optimization},
 ];
+
 	$("#example-table").tabulator("setData", tabledata);
 };
 </script>
