@@ -156,7 +156,7 @@ var APList = [AP0,AP1,AP2,AP3,AP4,AP5,AP6,AP7,AP8,AP9,AP10,AP11,AP12,AP13]
     	<script>
     	//create Tabulator on DOM element with id "example-table"
 		$("#example-table").tabulator({
-    	height:480, // set height of table, this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
+    	height:478, // set height of table, this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
     	fitColumns:true, //fit columns to width of table (optional)
     	columns:[ //Define Table Columns
         {title:"Name", field:"name", width:150},
@@ -219,6 +219,23 @@ $("#example-table").tabulator("setData", tabledata);
 <script>
 document.getElementById("myList").onchange = function() {
 	emergencyupdate(APList[this.value],APList);
+	var tabledata = [
+    {id:1, name:APList[0].name, percent:APList[0].percent, client:APList[0].clients, lev:APList[0].level},
+    {id:2, name:APList[1].name, percent:APList[1].percent, client:APList[1].clients, lev:APList[1].level},
+    {id:3, name:APList[2].name, percent:APList[2].percent, client:APList[2].clients, lev:APList[2].level},
+    {id:4, name:APList[3].name, percent:APList[3].percent, client:APList[3].clients, lev:APList[3].level},
+    {id:5, name:APList[4].name, percent:APList[4].percent, client:APList[4].clients, lev:APList[4].level},
+    {id:6, name:APList[5].name, percent:APList[5].percent, client:APList[5].clients, lev:APList[5].level},
+    {id:7, name:APList[6].name, percent:APList[6].percent, client:APList[6].clients, lev:APList[6].level},
+    {id:8, name:APList[7].name, percent:APList[7].percent, client:APList[7].clients, lev:APList[7].level},
+    {id:9, name:APList[8].name, percent:APList[8].percent, client:APList[8].clients, lev:APList[8].level},
+    {id:10, name:APList[9].name, percent:APList[9].percent, client:APList[9].clients, lev:APList[9].level},
+    {id:11, name:APList[10].name, percent:APList[10].percent, client:APList[10].clients, lev:APList[10].level},
+    {id:12, name:APList[11].name, percent:APList[11].percent, client:APList[11].clients, lev:APList[11].level},
+    {id:13, name:APList[12].name, percent:APList[12].percent, client:APList[12].clients, lev:APList[12].level},
+    {id:14, name:APList[13].name, percent:APList[13].percent, client:APList[13].clients, lev:APList[13].level},
+];
+	$("#example-table").tabulator("setData", tabledata);
 };
 </script>
 
