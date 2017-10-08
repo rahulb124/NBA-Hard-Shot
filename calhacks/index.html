@@ -117,6 +117,8 @@ function emergencyupdate(eAP, APL){
 			}
 		}
 		for (i = 0; i < APL.length; i++) {
+			console.log(samefloorid.includes(APL[i].id))
+			
 			if (APL[i].id != dangerid && samefloorid.includes(APL[i].id)) {
 				console.log(APL[i])
 				APL[i].percent = Math.round(100/(samefloorid.length - 1));
