@@ -165,25 +165,25 @@ console.log(APList);
 <form>
 <select id="myList" >
   <option value="default">None</option>
-  <option value="AP0">0</option>
-  <option value="AP1">1</option>  
-  <option value="AP2">2</option>
-  <option value="AP3">3</option>	
-  <option value="AP4">4</option>  
-  <option value="AP5">5</option>
-  <option value="AP6">6</option>
-  <option value="AP7">7</option>  
-  <option value="AP8">8</option>
-  <option value="AP9">9</option>
-  <option value="AP10">10</option>  
-  <option value="AP11">11</option>
-  <option value="AP12">12</option>
-  <option value="AP13">13</option>  
+  <option value=0>0</option>
+  <option value=1>1</option>  
+  <option value=2>2</option>
+  <option value=3>3</option>	
+  <option value=4>4</option>  
+  <option value=5>5</option>
+  <option value=6>6</option>
+  <option value=7>7</option>  
+  <option value=8>8</option>
+  <option value=9>9</option>
+  <option value=10>10</option>  
+  <option value=11>11</option>
+  <option value=12>12</option>
+  <option value=13>13</option>  
 </select>
 <form>
 <script>
 document.getElementById("myList").onchange = function() {
-	emergencyupdate(this.value,APList);
+	emergencyupdate(APList[this.value],APList);
 	console.log(APList);
 };
 </script>
