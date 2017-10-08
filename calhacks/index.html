@@ -179,6 +179,7 @@ console.log(APList);
 <form>
 <script>
 document.getElementById("myList").onchange = function() {
+	console.log(this.value);
 	emergencyupdate(this.value,APList);
 	console.log(APList);
 };
