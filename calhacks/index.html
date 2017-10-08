@@ -159,9 +159,9 @@ var APList = [AP0,AP1,AP2,AP3,AP4,AP5,AP6,AP7,AP8,AP9,AP10,AP11,AP12,AP13]
     	fitColumns:true, //fit columns to width of table (optional)
     	columns:[ //Define Table Columns
         {title:"Name", field:"name", width:150},
+        {title:"Floor level", field:"lev", sorter:"number"},
         {title:"Floorpercent", field:"percent", align:"left", formatter:"progress"},
         {title:"Clients", field:"client"},
-        {title:"Floor level", field:"lev", sorter:"number"},
     ],
     rowClick:function(e, row){ //trigger an alert message when the row is clicked
         alert("Row " + row.getData().id + " Clicked!!!!");
