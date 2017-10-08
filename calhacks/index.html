@@ -158,19 +158,13 @@ console.log(APList);
     	get rekt
     </div>
 </div>
-<script>
-document.getElementById("myList").onchange = function() {
-	emergencyupdate(this.value,APList);
-	console.log(APList);
-};
-</script>
 <form>
 <select id="myList" >
   <option value="default">None</option>
   <option value="AP0">0</option>
   <option value="AP1">1</option>  
   <option value="AP2">2</option>
-  <option value="AP3">3</option>
+  <option value="AP3">3</option>	
   <option value="AP4">4</option>  
   <option value="AP5">5</option>
   <option value="AP6">6</option>
@@ -183,8 +177,12 @@ document.getElementById("myList").onchange = function() {
   <option value="AP13">13</option>  
 </select>
 <form>
-
-
+<script>
+document.getElementById("myList").onchange = function() {
+	emergencyupdate(this.value,APList);
+	console.log(APList);
+};
+</script>
 
 
 </body
