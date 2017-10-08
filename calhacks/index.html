@@ -264,6 +264,7 @@ document.getElementById("myList").onchange = function() {
 	emergencyupdate(APList[this.value],APList);
 	APList[this.value].percent = 0;
 	APList[this.value].clients = 0;
+optimizationnation(APList);
 var tabledata = [
     {id:1, name:APList[0].name, percent:APList[0].percent, client:APList[0].clients, lev:APList[0].level, opt:APList[0].optimization},
     {id:2, name:APList[1].name, percent:APList[1].percent, client:APList[1].clients, lev:APList[1].level, opt:APList[1].optimization},
