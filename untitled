@@ -1,0 +1,7 @@
+
+
+class AccessPoint:
+	def __init__(self,id:'int',name:'str',clients:'int'):
+		self.id = id
+		self.name = name
+		self.clients = clients

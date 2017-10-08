@@ -1,48 +1,93 @@
-<!--
-  Example frontend for the geolocation API sample webapp.
+<!html>
 
-  This should be placed in your Sinatra public directory (almost always /public), and
-  is viewed by navigating to
-    <sample-app-url>/
--->
+<head>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Scanning API Location App</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="sample.css">
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key=AIzaSyBhCvX58iFlfPTS6wCOxkKwY_OoDe_8gg8"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-    <script src="sample.js"></script>
-  </head>
-  <body>
-    <div id="masthead">
-      <div id="masthead-content">
-        <img src="https://meraki.cisco.com/img/cisco-meraki.png"/>
-        <a id="url" href="https://developers.meraki.com">developers.meraki.com</a>
-      </div>
+.h2 {
+	position:center;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+#myInput {
+    border-box: box-sizing;
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 230px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #ddd}
+
+.show {display:block;}
+
+.container {
+  width: 80%;
+  margin: 15px auto;
+}
+
+.hide {
+  display: none;
+}
+
+</style>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<body>
+<title>aLert</title>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
     </div>
-    <div id="content">
-      <h1>Scanning API Location App</h1>
-      <div id="mac-address">
-        <input id="mac-field" type="text" placeholder="Enter MAC address" />&nbsp;
-        <button id="track">Follow</button>&nbsp;
-        <select id="event-select">
-          <option value="All">All Devices</option>
-          <option value="DevicesSeen">Wireless Only</option>
-          <option value="BluetoothDevicesSeen">Bluetooth Only</option>
-        <select>
-        <select id="floor-select">
-          <option value="All" selected>All floors</option>
-        </select>
-      </div>
-      <div id="last-mac"></div>
-      <div class="small"><span class="bold">Clients in the wrong place?</span> Make sure your APs are placed properly in Dashboard.</div>
-      <div id="map-wrapper">
-        <div id="map-canvas"></div>
-      </div>
-    </div>
-  </body>
-</html>
+    <ul class="nav navbar-nav">
+      <li class="active"><a data-ajax="false" href="/about.html">About</a></li>
+      <li><a data-ajax="false" href="/players.html">Players</a></li>
+      <li><a data-ajax="false" href="/compare.html">Compare</a></li>
+      <li><a data-ajax="false" href="/sort.html">Sort</a></li>
+    </ul>
+  </div>
+</nav>
+<h1>Dashboard</h1>
+
+
+</body
+
