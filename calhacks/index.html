@@ -121,7 +121,7 @@ function emergencyupdate(eAP, APL){
 				APL[i].percent = Math.round(100/(samefloorid.length - 1));
 			}
 		}
-
+		console.log('esketit');
 };
 
 var AP0 = new AccessPoint(13803418528385,"Microsoft Bar", 75, 20, 1);
@@ -179,7 +179,6 @@ console.log(APList);
 <form>
 <script>
 document.getElementById("myList").onchange = function() {
-	console.log(this.value);
 	emergencyupdate(this.value,APList);
 	console.log(APList);
 };
