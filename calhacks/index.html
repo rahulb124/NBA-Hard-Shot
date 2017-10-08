@@ -97,6 +97,40 @@ var dump = $.getJSON( "/calhacks/scape.json", function() {
   window.lol = JSON.parse(dump.responseText);
 })
 </script>
+<script>
+class AccessPoint {
+   	constructor(id,name,clients,percent, levels){
+        this.id = id;
+        this.name = name;
+        this.clients = clients;
+        this.percent = percent;
+        this.level = level;
+       }
+    };
+
+var AP0 = new AccessPoint(13803418528385,"Microsoft Bar", 75, 20, 1);
+var AP1 = new AccessPoint(13803418551334,"Concur", 42, 30, 1);
+var AP2 = new AccessPoint(13803418548714,"Black Rock", 66, 30, 1);
+var AP3 = new AccessPoint(13803418555583,"Spark Bars", 138, 20, 2);
+var AP4 = new AccessPoint(13803418562318,"Cal Hacks Bar", 105, 20, 1);
+var AP5 = new AccessPoint(13803418555412,"Meraki Bar", 93, 20, 2);
+var AP6 = new AccessPoint(13803418555600,"Meraki Corner 14:d0", 30, 30, 2);
+var AP7 = new AccessPoint(13803418528390,"Spark Corner", 45, 30, 2);
+var AP8 = new AccessPoint(13803418544460,"Stadium Mezzanine Right", 12, 40, 4);
+var AP9 = new AccessPoint(13803418550744,"Stadium Club Left", 21, 30, 3);
+var AP10 = new AccessPoint(13803418550705,"Stadium Club Center", 15, 40, 3);
+var AP11 = new AccessPoint(13803418544494,"Stadium Mezzanine Center", 18, 20, 4);
+var AP12 = new AccessPoint(13803418531126,"Stadium Mezzanine Left", 3, 40, 4);
+var AP13 = new AccessPoint(13803418549765,"Stadium Club Right", 15, 30, 3);
+</script>
+
+
+
+
+
+
+
+
 <div class="row-fluid show-grid">
     <div class="span6">6</div>
     <div class="span6">6</div>
